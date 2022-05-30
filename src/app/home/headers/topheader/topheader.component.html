@@ -1,0 +1,56 @@
+<div class="overflow-hidden bg-header cairo topheader">
+    <header class="border">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+            <div class="col-4 pt-1 d-none d-md-block">
+                <img src="../../../../assets/img/1.png" class="logo-ministry mx-3 mb-2" />
+            </div>
+            <div class="col-lg-4 text-center">
+                <h2 class="cairo  border-bottom border-dark pb-3 font-weight-bold">جامعة الموصل</h2>
+                <h2 class="cairo  font-weight-bold">
+                    نظام أدارة ألموارد ألبشرية
+                </h2>
+            </div>
+            <div class="col-4 pt-1 d-none d-md-block ">
+                <img  src="../../../../assets/img/0.png" class="logo-university mx-3 float-left" />
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-md border-top py-1   cairo">
+            <div class="container-fluid py-0">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="تبديل التنقل">
+                    <span class="fa fa-list text-success"></span>
+                </button>
+                <span id="sidebarCollapse" class="menubar-icon"> 
+                    <i class="fas fa-times fa-lg text-green"></i>
+                    <i class="fas fa-align-justify fa-lg hidden text-green"></i>
+                </span> 
+
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav">
+                        <li class="nav-item mx-n2 ">
+                            <a class="nav-link" routerLink="/employee">ألموارد ألبشرية</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav mr-auto ml-0 float-left">
+                        <li class="nav-item" *ngIf="!auth.isLoggedIn();">
+                            <a class="nav-link nav-link-local text-dark" routerLink="/register">
+                                <i class="fa fa-user px-1 "></i> تسجيل حساب
+                            </a>
+                        </li>
+                        <li class="nav-item" *ngIf="!auth.isLoggedIn();">
+                            <a class="nav-link nav-link-local text-dark" routerLink="/login">
+                                <i class="fa fa-user px-1"></i> تسجيل الدخول
+                            </a>
+                        </li>
+                        <li class="nav-item" *ngIf="auth.isLoggedIn();">
+                            <a class="nav-link nav-link-local text-dark" routerLink="" (click)="auth.logout()">
+                              <i class="fa fa-sign-out-alt px-1 fa-rotate-180 px-1"></i> تسجيل ألخروج
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+</div>

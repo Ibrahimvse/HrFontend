@@ -1,0 +1,59 @@
+<div class="wrapper ">
+    <div class="sidebar right-sidebar border-left border-red">
+        <div class="sidebar-header">
+            <h4> <i class="fas fa-user-cog"></i> معلومات ألموظف </h4>
+        </div>
+        <ul class="list-unstyled">
+            <li>
+                <a routerLink="basicinfo" routerLinkActive="active" >
+                   <i class="fa fa-user fa-lg px-4"></i>المعلومات ألاساسية
+               </a>
+            </li>
+            <li>
+                <a routerLink="basicinfo/1" routerLinkActive="active" >
+                   <i class="fas fa-user-tie fa-lg px-4"></i>ألمعلومات ألوظيفية
+               </a>
+            </li>
+            <li routerLink="certificates" routerLinkActive="active">
+                <a>
+                   <i class="fa fa-certificate  px-4"></i>ألشهادات
+               </a>
+            </li>
+            <li routerLink="devices" routerLinkActive="active">
+                <a>
+                   <i class="fa fa-list  px-4"></i>ألتدرج ألوظيفي
+               </a>
+            </li>
+            <li routerLink="devices" routerLinkActive="active">
+                <a>
+                   <i class="fa fa-calendar px-4"></i>ألاجازات
+               </a>
+            </li>
+            <li routerLink="devices" routerLinkActive="active">
+                <a>
+                   <i class="fa fa-file-archive px-4"></i>ألوثائق ألرسمية
+               </a>
+            </li>
+            <li routerLink="devices" routerLinkActive="active">
+                <a>
+                   <i class="fa fa-list px-4"></i>ألمناصب
+               </a>
+            </li>
+            <li routerLink="devices" routerLinkActive="active">
+                <a>
+                   <i class="fa fa-home px-4"></i>أماكن العمل
+               </a>
+            </li>
+
+        </ul>
+    </div>
+    <div class="contents">
+        <div class="page-header  d-flex d-inline-flex justify-content-between w-100">
+            <h4 class="d-inline "> ألمعلومات ألاساسية- أبراهيم جميل مجهد </h4> 
+        </div>
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,6 @@
+<label [for]="id" class="form-label">{{label}}</label>
+<select #mySelect  class="selectpicker form-control" data-live-search="true" (change)="onChange(mySelect.value)" [id]="id" name="name"  [value]="selected" required>
+    <option *ngFor="let item of values;let i=index;"  [value]="item" [selected]="item==selected" >
+        {{item}}
+    </option>
+</select>  

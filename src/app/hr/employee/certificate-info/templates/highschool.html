@@ -1,0 +1,117 @@
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <app-selectpicker 
+                    [values]="certificateService.getCountriesList()" 
+                    [selected]="item.country"
+                    [label]="'بلد ألدراسة'"
+                    (valueChange)="certificateService.onCountryChange($event,item)">
+                </app-selectpicker>
+
+            </div>
+            <div class="col-md-4 " *ngIf="certificateService.isContryIraq(item.country)==true">
+                <app-selectpicker 
+                    [values]="certificateService.getProvincesList()" 
+                    [selected]="item.province"
+                    [label]="'ألمديرية ألعامة لتربية'"
+                    (valueChange)="certificateService.onProvinceChange($event,item)">
+                </app-selectpicker>
+            </div>
+            <div class="col-md-4" *ngIf="certificateService.isContryIraq(item.country)==true">
+                <label for="county" class="form-label">تربية قضاء :</label>
+                <select  class="custom-select shadow-none" id="county" name="county"  [(ngModel)]="item.county"  required>
+                    <option *ngFor="let item of certificateService.getCities(item.province,item);let i=index;"  [value]="item" >
+                        {{item}}
+                    </option>
+                </select>                 
+            </div>
+            <div class="col-md-4" *ngIf="!certificateService.isContryIraq(item.country)==true">
+    
+                    <label for="province" class="form-label">ألمحافظة أو ألولاية :</label>
+                    <input type="text" class="form-control" name="province" id="province" placeholder=""
+                                [(ngModel)]="item.province" required #province="ngModel"
+                                [ngClass]="{ 'is-invalid':  province.errors && certificateService.isCertificateFormSubmitted}">
+
+            </div>
+            <div class="col-md-4" *ngIf="!certificateService.isContryIraq(item.country)==true">
+                    <label for="county" class="form-label">ألمدينة :</label>
+                    <input type="text" class="form-control" name="county" id="county" placeholder=""
+                                [(ngModel)]="item.county" required #county="ngModel"
+                                [ngClass]="{ 'is-invalid':  county.errors && certificateService.isCertificateFormSubmitted}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <app-datepicker
+                    [input]="item.certificateDate"
+                    [name]="'certificateDate'" 
+                    [label]="'تاريخ ألحصول على ألشهادة'" 
+                    (dateChange)="item.certificateDate=$event">
+                </app-datepicker>
+            </div>
+            <div class="col-md-8">
+                    <label for="schoolName" class="form-label">أسم ألمدرسة :</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="schoolName" id="schoolName" placeholder=""
+                        [(ngModel)]="item.schoolName" required #schoolName="ngModel"
+                        [ngClass]="{ 'is-invalid':  schoolName.errors && certificateService.isCertificateFormSubmitted}">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-school" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="row border mx-0">
+            <div class="col-md-4 mt-2">
+                <label class="form-label"> ألدراسة :</label>
+            </div>
+            <div class="col-md-2" *ngFor="let type of HighSchoolEducationTypes;let i=index">
+                <div class="icheck-greensea ml-3 my-2">
+                    <input class="box" type="radio" name="educationType_{{i}}"
+                        [(ngModel)]="item. educationType" [value]="type"
+                        id="educationType_{{i}}">
+                    <label for="educationType_{{i}}" class="px-5"> {{type}} </label>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="selectedBranch">
+            <div class="col-md-4">
+                <label for="mainbranch" class="form-label">ألتعليم ألــ :</label>
+                <select  class="custom-select shadow-none" id="mainbranch" name="mainbranch" (change)="onMainBranchChange()"  [(ngModel)]="item.mainBranch"  required>
+                    <option *ngFor="let mainbranch of HighSchoolBranches;let i=index;"  [value]="mainbranch.branch" >
+                        {{mainbranch.branch}}
+                    </option>
+                </select>  
+            </div>
+            <div class="col-md-4" *ngIf="selectedBranch.subBranches && selectedBranch.subBranches.length">
+                <label for="branch" class="form-label">ألفرع (1) :</label>
+                <select  class="custom-select shadow-none" id="branch" name="branch"  (change)="onBranchChange()"   [(ngModel)]="item.branch"  required>
+                    <option *ngFor="let branch of selectedBranch.subBranches;let i=index;"  [value]="branch.branch" >
+                        {{branch.branch}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-md-4" *ngIf="subBranches &&subBranches.length &&subBranches.length<8 ">
+                <label for="subbranch" class="form-label">ألفرع (2) :</label>
+                <select  class="custom-select shadow-none" id="subbranch" name="subbranch"   [(ngModel)]="item.subBranch"  required>
+                    <option *ngFor="let branch of subBranches;let i=index;"  [value]="branch" >
+                        {{branch}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-md-4 " *ngIf="subBranches &&subBranches.length &&subBranches.length>=8 ">
+                <app-selectpicker 
+                    [values]="subBranches" 
+                    [selected]="item.subBranch"
+                    [label]="'الفرع (2)'"
+                    (valueChange)="item.subBranch=$event">
+                </app-selectpicker>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        
+        <app-files [Files]="item.Files" [header]="'ألوثائق و ألاوامر ألادارية'"></app-files>
+    </div>

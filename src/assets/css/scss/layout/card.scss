@@ -1,0 +1,134 @@
+$light: #f8f9fa;
+$bg-header: darken($light, 2%);
+$border-color: darken($light, 5%);
+.content-container{
+    .card {
+        border: 0px transparent;
+        margin-bottom: 50px;
+        .card-header {
+            font-size: 20px;
+            height: 48px;
+            line-height: 48px !important;
+            background: white;
+            padding: 0px !important;
+            border: 0px;
+            display: flex;
+            justify-content: space-between;
+            h4 {
+                color: seagreen;
+                height: 48px !important;
+                background-color: $bg-header;
+                margin: 0px !important;
+                position: relative;
+                width: fit-content;
+                padding-top: 10px;
+                padding-right: 10px;
+                padding-left: 10px;
+                border-top: 2px solid $border-color;
+                border-right: 2px solid $border-color;
+                
+                .fa{
+                    color: $secondary;
+                    padding-left: 10px;
+
+                }
+                    
+                .fa-certificate{
+                    color:rgb(230,190,138) !important;
+                }
+                
+
+            }
+            h4::after {
+                content: "";
+                float: left;
+                position: absolute;
+                top: -2px;
+                left: -48px;
+                width: 0;
+                height: 0;
+                border-color: transparent $bg-header transparent transparent;
+                border-style: solid;
+                border-width: 48px 48px 0px 0px;
+            }
+            .btn-close{
+                margin-top: 10px;
+                padding-left: 2px;
+                i{
+                    color:$gray;
+                    font-size:25px;
+                    &:hover{
+                        color:$danger;
+                    }
+                }
+           
+            }
+
+            .btn-print{
+                margin-top: 12px;
+                padding-left: 20px;
+
+                i{
+                    color:$gray;
+                    font-size:20px;
+                    &:hover{
+                        color:seagreen;
+                    }
+                }
+            }
+
+            .icheck-greensea{
+                label{
+                    margin-top: 8px;
+                    font-size: 16px;
+                }
+            }
+          
+            
+        }
+        .card-body {
+            padding: 20px 30px;
+            border: 2px solid $border-color;
+            background-image: linear-gradient($bg-header, darken($light, 2%));
+            .row {
+                margin-bottom: 30px;
+            }
+        }
+    
+        .btn-success {
+            background: seagreen;
+        }
+    }
+}
+
+.btn-success {
+    background: seagreen;
+    &:hover{
+        background: $gray-2;
+    }
+}
+
+@media print{
+    .card-header{
+        .icheck-greensea{
+            margin-left: 40% !important;
+        }
+        .toolbar{
+            display: none !important;
+        }
+    }
+ 
+    .card-body{
+        margin-bottom: 0px ;
+        -webkit-break-inside: avoid !important;
+        .row{
+            padding-bottom: 10px;
+            padding-top: 5px;
+            break-inside: avoid-page !important;
+            page-break-inside: avoid !important;
+        }
+
+    }
+
+
+}

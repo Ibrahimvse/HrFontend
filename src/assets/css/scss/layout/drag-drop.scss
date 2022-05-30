@@ -1,0 +1,123 @@
+
+.drag-sidebar{
+    min-width: 292px;
+    max-width: 292px;
+
+    background: darken($bg-header,1%);
+    border-left: 2px solid lighten(black,60%);
+    color:$fontcolor;
+    transition: all 0.5s cubic-bezier(0.945, 0.02, 0.27, 0.665);
+    transform-origin: bottom right;
+
+    .drag-list {
+        position: sticky;
+        top:0px;
+        min-height: 60px;
+        color: black;
+        border-radius: 1px;
+        overflow: hidden;
+        display: block;
+
+        .drag-item-box {
+            padding: 0px 20px;
+            border-bottom: 1px solid black;
+            color: seagreen;
+            height: 48px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            box-sizing: border-box;
+            font-size: 18px;
+            span{
+                transition: all 0.2s ease;
+            }
+            &:hover{
+                background: white;
+                span{
+                    margin-right: 10px;
+                }
+            }
+
+            .drag-handle {
+
+                cursor: move;
+                width: 30px;
+                height: 30px;
+                margin-right: 10px;
+                margin-left: 20px;
+                color:$gray-dark;
+                
+            }
+            &.cdk-drag-disabled{
+                color:$dark;
+                cursor: default;
+                .drag-handle {
+                    cursor: default !important;
+                    color:$green;
+                    &:hover{
+                        color:$danger;
+                    }
+                }
+                &:hover{
+                    background: none;
+                    span{
+                        margin-right: 0px;
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+.cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.2),
+                0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction:row-reverse;
+    align-items: center;
+    font-size: 19px;
+    font-weight: 400;
+    cursor: move;
+    span{
+        transition: all 0.2s ease;
+        padding-right: 20px;
+    }
+    .drag-handle {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+  
+.cdk-drag-placeholder {
+    opacity: 1;
+    display: flex;
+   
+    align-items: center;
+    font-size: 19px;
+    font-weight: 400;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+    span{
+        transition: all 0.2s ease;
+        padding-right: 20px;
+    }
+    .drag-handle {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+  
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+@media print{
+    .drag-sidebar{
+        display:none;
+    }
+}

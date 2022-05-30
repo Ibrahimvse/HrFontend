@@ -1,0 +1,71 @@
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <app-selectpicker 
+                    [values]="certificateService.getCountriesList()" 
+                    [selected]="item.country"
+                    [label]="'بلد ألدراسة'"
+                    (valueChange)="certificateService.onCountryChange($event,item)">
+                </app-selectpicker>
+
+            </div>
+            <div class="col-md-4 " *ngIf="certificateService.isContryIraq(item.country)==true">
+                <app-selectpicker 
+                    [values]="certificateService.getProvincesList()" 
+                    [selected]="item.province"
+                    [label]="'ألمديرية ألعامة لتربية'"
+                    (valueChange)="certificateService.onProvinceChange($event,item)">
+                </app-selectpicker>
+            </div>
+            <div class="col-md-4" *ngIf="certificateService.isContryIraq(item.country)==true">
+                <label for="county" class="form-label">تربية قضاء :</label>
+                <select  class="custom-select shadow-none" id="county" name="county"  [(ngModel)]="item.county"  required>
+                    <option *ngFor="let item of certificateService.getCities(item.province,item);let i=index;"  [value]="item" >
+                        {{item}}
+                    </option>
+                </select>                 
+            </div>
+            <div class="col-md-4" *ngIf="!certificateService.isContryIraq(item.country)==true">
+    
+                    <label for="province" class="form-label">ألمحافظة أو ألولاية :</label>
+                    <input type="text" class="form-control" name="province" id="province" placeholder=""
+                                [(ngModel)]="item.province" required #province="ngModel"
+                                [ngClass]="{ 'is-invalid':  province.errors && certificateService.isCertificateFormSubmitted}">
+
+            </div>
+            <div class="col-md-4" *ngIf="!certificateService.isContryIraq(item.country)==true">
+                    <label for="county" class="form-label">ألمدينة :</label>
+                    <input type="text" class="form-control" name="county" id="county" placeholder=""
+                                [(ngModel)]="item.county" required #county="ngModel"
+                                [ngClass]="{ 'is-invalid':  county.errors && certificateService.isCertificateFormSubmitted}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <app-datepicker
+                    [input]="item.certificateDate"
+                    [name]="'certificateDate'" 
+                    [label]="'تاريخ ألحصول على ألشهادة'" 
+                    (dateChange)="item.certificateDate=$event">
+                </app-datepicker>
+            </div>
+            <div class="col-md-8">
+                    <label for="schoolName" class="form-label">أسم ألمدرسة :</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="schoolName" id="schoolName" placeholder=""
+                        [(ngModel)]="item.schoolName" required #schoolName="ngModel"
+                        [ngClass]="{ 'is-invalid':  schoolName.errors && certificateService.isCertificateFormSubmitted}">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-school" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+
+
+            </div>
+        </div>
+        
+        <app-files [Files]="item.Files" [header]="'ألوثائق و ألاوامر ألادارية'"></app-files>
+    </div>

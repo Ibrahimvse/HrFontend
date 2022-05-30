@@ -1,0 +1,440 @@
+<div class="content-container m-7">
+    <form #frm="ngForm" class="needs-validation" (ngSubmit)="submit(frm)">
+        <div class="card">
+            <div class="card-header">
+                <h4> <i class="fa fa-id-card"></i> معلومات ألاسم </h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="firstname" class="form-label">ألاسم ألاول :</label>
+                        <input type="text" class="form-control" name="firstname" id="firstname" placeholder=""
+                            [(ngModel)]="employee.aFirstName" required #aFirstName="ngModel" minlength="3" lang="ar"
+                            [ngClass]="{ 'is-invalid':  aFirstName.errors && frm.submitted}" />
+                        <div *ngIf="aFirstName.invalid" class="invalid-feedback">
+                            <div *ngIf="aFirstName.errors.required!=null">الاسم ألأول مطلوب</div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="secondname" class="form-label">أسم ألأب :</label>
+                        <input type="text" class="form-control" name="secondname" id="secondname" placeholder=""
+                            [(ngModel)]="employee.aFatherName" required #aFatherName="ngModel" minlength="3" lang="ar"
+                            [ngClass]="{ 'is-invalid':  aFatherName.errors && frm.submitted}" />
+                        <div *ngIf="aFatherName.invalid" class="invalid-feedback">
+                            <div *ngIf="aFatherName.errors.required!=null">اسم ألاب مطلوب</div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="thirdname" class="form-label">أسم ألجد :</label>
+                        <input type="text" class="form-control" name="thirdname" id="thirdname" placeholder=""
+                            [(ngModel)]="employee.aGrandFatherName" required #aGrandFatherName="ngModel" minlength="3"
+                            lang="ar" [ngClass]="{ 'is-invalid':  aGrandFatherName.errors && frm.submitted}" />
+                        <div *ngIf="aGrandFatherName.invalid" class="invalid-feedback">
+                            <div *ngIf="aGrandFatherName.errors.required!=null">أسم ألجد مطلوب</div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="fourthname" class="form-label">ألاسم ألرابع :</label>
+                        <input type="text" class="form-control" name="fourthname" id="fourthname" placeholder=""
+                            [(ngModel)]="employee.aFourthName" required #aFourthName="ngModel" minlength="3" lang="ar"
+                            [ngClass]="{'is-invalid':  aFourthName.errors && frm.submitted}" />
+                        <div *ngIf="aFourthName.invalid" class="invalid-feedback">
+                            <div *ngIf="aFourthName.errors.required!=null">الاسم ألرابع مطلوب</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 offset-md-1">
+                        <label for="surename" class="form-label">أللقب :</label>
+                        <input type="text" class="form-control" name="surename" id="surename" placeholder=""
+                            [(ngModel)]="employee.aSureName" required #aSureName="ngModel" minlength="3" lang="ar"
+                            [ngClass]="{ 'is-invalid':  aSureName.errors && frm.submitted}" />
+                        <div *ngIf="aSureName.invalid" class="invalid-feedback">
+                            <div *ngIf="aSureName.errors.required!=null">اللقب مطلوب </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="efirstname" class="form-label">ألاسم ألاول (English) :</label>
+                        <input type="text" class="form-control" name="efirstname" id="efirstname" placeholder=""
+                            [(ngModel)]="employee.eFirstName" required #eFirstName="ngModel" minlength="3" lang="en"
+                            [ngClass]="{ 'is-invalid':  eFirstName.errors && frm.submitted}" />
+                        <div *ngIf="eFirstName.invalid" class="invalid-feedback">
+                            <div *ngIf="eFirstName.errors.required!=null">الاسم ألأول مطلوب</div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="esecondname" class="form-label">أسم ألأب (English) :</label>
+                        <input type="text" class="form-control" name="esecondname" id="esecondname" placeholder=""
+                            [(ngModel)]="employee.eFatherName" required #eFatherName="ngModel"  lang="en"
+                            [ngClass]="{ 'is-invalid':  eFatherName.errors && frm.submitted}" />
+                        <div *ngIf="eFatherName.invalid" class="invalid-feedback">
+                            <div *ngIf="eFatherName.errors.required!=null">اسم ألاب مطلوب</div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="ethirdname" class="form-label">أسم ألجد (English) :</label>
+                        <input type="text" class="form-control" name="ethirdname" id="ethirdname" placeholder=""
+                            [(ngModel)]="employee.eGrandFatherName" required #eGrandFatherName="ngModel" minlength="3"
+                            lang="en" [ngClass]="{ 'is-invalid':  eGrandFatherName.errors && frm.submitted}" />
+                        <div *ngIf="eGrandFatherName.invalid" class="invalid-feedback">
+                            <div *ngIf="eGrandFatherName.errors.required!=null">أسم ألجد مطلوب</div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="efourthname" class="form-label">ألاسم ألرابع (English) :</label>
+                        <input type="text" class="form-control" name="efourthname" id="efourthname" placeholder=""
+                            [(ngModel)]="employee.eFourthName" required #eFourthName="ngModel" minlength="3" lang="en"
+                            [ngClass]="{ 'is-invalid':  eFourthName.errors && frm.submitted}" />
+                        <div *ngIf="eFourthName.invalid" class="invalid-feedback">
+                            <div *ngIf="eFourthName.errors.required!=null">الاسم ألرابع مطلوب</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 offset-md-1">
+                        <label for="esurename" class="form-label">أللقب (English) :</label>
+                        <input type="text" class="form-control" name="esurename" id="esurename" placeholder=""
+                            [(ngModel)]="employee.eSureName" required #eSureName="ngModel" minlength="3" lang="en"
+                            [ngClass]="{ 'is-invalid':  eSureName.errors && frm.submitted}" />
+                        <div *ngIf="eSureName.invalid" class="invalid-feedback">
+                            <div *ngIf="eSureName.errors.required!=null">أللقب مطلوب :</div>
+                        </div>
+                    </div>
+                </div>
+    
+    
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="mothername" class="form-label"> أسم ألام ألكامل:</label>
+                        <input type="text" class="form-control" name="mothername" id="mothername" placeholder=""
+                            [(ngModel)]="employee.motherName" required #motherName="ngModel" minlength="3" lang="ar"
+                            [ngClass]="{ 'is-invalid':  motherName.errors && frm.submitted}" />
+                        <div *ngIf="motherName.invalid" class="invalid-feedback">
+                            <div *ngIf="motherName.errors.required!=null">اسم ألام مطلوب</div>
+                        </div>
+                    </div>
+    
+    
+                    <div class="col-md-6 offset-2  mt-md-4">
+                        <label class="py-2 pl-5">ألجنس : </label>
+                        <div class="d-flex d-inline-flex justify-content-between">
+                            <div class="icheck-greensea ml-3 my-2 d-inline">
+                                <input class="box" type="radio" name="gender" [(ngModel)]="employee.gender" value="ذكر"
+                                    id="gendermale">
+                                <label for="gendermale" class="px-5"> ذكر </label>
+                            </div>
+                            <div class="icheck-greensea ml-3 my-2 d-inline">
+                                <input class="box" type="radio" name="gender" [(ngModel)]="employee.gender" value="أنثى"
+                                    id="genderfemale">
+                                <label for="genderfemale" class="px-5"> أنثى </label>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    
+        <div class="card">
+            <div class="card-header">
+                <h4> <i class="fa fa-users"></i> ألحالة ألزوجية</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="icheck-greensea ml-3 my-2">
+                            <input class="box" type="radio" name="MaritialStatus"
+                                [(ngModel)]="employee.maritial.MaritialStatus" [value]="MaritialStatuses[0]"
+                                id="MaritialStatuses0">
+                            <label for="MaritialStatuses0" class="px-5"> {{MaritialStatuses[0]}} </label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="icheck-greensea ml-3 my-2">
+                            <input class="box" type="radio" name="MaritialStatus"
+                                [(ngModel)]="employee.maritial.MaritialStatus" [value]="MaritialStatuses[1]"
+                                id="MaritialStatuses1">
+                            <label for="MaritialStatuses1" class="px-5"> {{MaritialStatuses[1]}} </label>
+                        </div>
+    
+                    </div>
+                    <div class="col-md-3">
+                        <div class="icheck-greensea ml-3 my-2">
+                            <input class="box" type="radio" name="MaritialStatus"
+                                [(ngModel)]="employee.maritial.MaritialStatus" [value]="MaritialStatuses[2]"
+                                id="MaritialStatuses2">
+                            <label for="MaritialStatuses2" class="px-5"> {{MaritialStatuses[2]}} </label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="icheck-greensea ml-3 my-2">
+                            <input class="box" type="radio" name="MaritialStatus"
+                                [(ngModel)]="employee.maritial.MaritialStatus" [value]="MaritialStatuses[3]"
+                                id="MaritialStatuses3">
+                            <label for="MaritialStatuses3" class="px-5"> {{MaritialStatuses[3]}} </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" *ngIf="employee.maritial.MaritialStatus==MaritialStatuses[1]">
+                    <div class="col-md-4">
+                        <label for="partenername" class="form-label">
+                            {{employee.gender=='ذكر' ? 'أسم ألزوجة ألكامل :' : 'أسم ألزوج ألكامل :'}}
+                        </label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="partenername" id="partenername" placeholder=""
+                            [(ngModel)]="employee.maritial.partenerName" required #partenerName="ngModel" minlength="3"
+                            lang="ar" [ngClass]="{ 'is-invalid':  partenerName.errors && frm.submitted}" />
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-female fa-1x" aria-hidden="true" *ngIf="employee.gender=='ذكر'"></i>
+                                    <i class="fa fa-male" aria-hidden="true" *ngIf="employee.gender=='أنثى'"></i>
+                                </span>
+                            </div>
+                            <div *ngIf="partenerName.invalid" class="invalid-feedback">
+                                <div *ngIf="partenerName.errors.required!=null">
+                                    {{employee.gender=='ذكر' ? 'أسم ألزوجة مطلوب :' : 'أسم ألزوج مطلوب :'}}
+                                </div>
+                            
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-3">
+                        <app-datepicker
+                            [input]="employee.maritial.marriageDate"
+                            [name]="'marriageDate'" 
+                            [label]="'تاريخ ألزواج'" 
+                            (dateChange)="employee.maritial.marriageDate=$event">
+                        </app-datepicker>
+                    </div>
+    
+                    <div class="col-md-5  d-flex d-inline-flex justify-content-between mt-4">
+                        <label class="py-2">هل الزوج موظف في أحد دوائر ألدولة؟ </label>
+                        <div class="icheck-greensea ml-3 my-2 d-inline">
+                            <input class="box" type="radio" name="IsPartenerEmployeed"
+                                [(ngModel)]="employee.maritial.isPartenerEmployeed" value="نعم" id="IsPartenerEmployeedYes">
+                            <label for="IsPartenerEmployeedYes" class="px-5"> نعم </label>
+                        </div>
+                        <div class="icheck-greensea ml-3 my-2 d-inline">
+                            <input class="box" type="radio" name="IsPartenerEmployeed"
+                                [(ngModel)]="employee.maritial.isPartenerEmployeed" value="كلا" id="IsPartenerEmployeedNo">
+                            <label for="IsPartenerEmployeedNo" class="px-5"> كلا </label>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="row" *ngIf="employee.maritial.MaritialStatus!=MaritialStatuses[0]">
+                    <div class="col-md-2">
+                        <label for="NumberOfChilderen" class="form-label">عدد ألاولاد:</label>
+                        <input type="number" disabled="true" [value]="employee.maritial.children.length"
+                            class="form-control" name="NumberOfChilderen" id="NumberOfChilderen" dir="rtl" placeholder=""
+                            [(ngModel)]="employee.maritial.numberOfChilderen" />
+                    </div>
+                    <div class="col-md-3 mt-5 offset-md-7 action-buttons">
+                        <button type="button" class="btn btn-success btn-block" (click)="employee.maritial.addChild()">
+                            <i class="fa fa-plus px-2"></i> أضافة طفل
+                        </button>
+                    </div>
+                </div>
+                <div class="" *ngIf="employee.maritial.MaritialStatus!=MaritialStatuses[0]">
+                    <div class="col-md-12">
+                        <ol class="px-3 ">
+                            <li *ngFor="let item of employee.maritial.children; let i = index" class=" my-1  px-0">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="childname_name{{i}}" class="form-label">ألاسم ألكامل :</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="childname_name{{i}}"
+                                                id="childname_name{{i}}" [(ngModel)]="item.name" required
+                                                #childName="ngModel" minlength="3" lang="ar"
+                                                [ngClass]="{ 'is-invalid': childName.errors && frm.submitted}" />
+
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fa fa-child" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
+                                            <div *ngIf="childName.invalid" class="invalid-feedback">
+                                                <div *ngIf="childName.errors.required!=null">اسم ألطفل مطلوب</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 " >
+                                        <app-datepicker
+                                            [input]="item.birthDate"
+                                            [name]="'child_birthdate{{i}}'" 
+                                            [label]="'تاريخ الميلاد'" 
+                                            (dateChange)="item.birthDate=$event">
+                                        </app-datepicker>
+                                    </div>
+    
+                                    <div class="col-md-1 offset-md-3 ">
+                                        <button class="btn close-button  mt-5  text-danger" (click)="employee.maritial.removeChild(i);"
+                                            title="حذف">
+                                            <i class="fa fa-times fa-md"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="card">
+            <div class="card-header">
+                <h4><i class="fa fa-phone"></i> معلومات ألاتصال </h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="email1" class="form-label">ألبريد ألالكتروني :</label>
+                        <div class="input-group">
+                            <input type="email" class="form-control" name="email1" id="email1" placeholder="you@uofmosul.edu"
+                            [(ngModel)]="employee.email" required #email="ngModel" email="true"
+                            [ngClass]="{ 'is-invalid':  email.errors && frm.submitted}" />
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                            </div>
+                            <div *ngIf="email.invalid" class="invalid-feedback">
+                                <div *ngIf="email.errors.email!=null">البريد ألالكتروني غير صالح</div>
+                                <div *ngIf="email.errors.required">البريد ألالكتروني مطلوب</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-3 offset-md-6">
+                        <label for="mobile" class="form-label">الموبايل :</label>
+                        <div class="input-group">
+                            <input type="mobile" class="form-control" name="mobile" id="mobile" placeholder=""
+                            [(ngModel)]="employee.mobile" required  pattern="^((\\+91-?)|0)?[0-9]{10}$"
+                            #mobile="ngModel"  [ngClass]="{ 'is-invalid': mobile.errors && frm.submitted}" />
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-mobile-alt" aria-hidden="true"></i></span>
+                            </div>
+                            <div *ngIf="mobile.invalid" class="invalid-feedback">
+                                <div *ngIf="mobile.errors.required">رقم ألموبايل مطلوب</div>
+                                <div *ngIf="mobile.errors.pattern">رقم ألموبايل غير صالح</div>
+                            </div>
+
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="card">
+            <div class="card-header">
+                <h4><i class="fa fa-map-marker-alt"></i> عنوان ألسكن </h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                    <app-selectpicker 
+                            [values]="provinces" 
+                            [selected]="employee.address.province"
+                            [label]="'المحافظة'"
+                            (valueChange)="onProvinceChange($event)">
+                        </app-selectpicker>
+                    </div>
+                    <div class="col-md-3 offset-md-6">
+                        <label for="county" class="form-label">ألقضاء :</label>
+                        <select #mySelect  class="custom-select form-control" [(ngModel)] ="employee.address.county" name="county"  [value]="employee.address.county" required>
+                            <option *ngFor="let item of cities;let i=index;"  [value]="item" >
+                                {{item}}
+                            </option>
+                        </select> 
+                         
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="city" class="form-label">
+                           ألمدينة أو الناحية :
+                        </label>
+                        <input type="text" class="form-control" name="city" id="city" placeholder=""
+                            [(ngModel)]="employee.address.city" required #city="ngModel" 
+                            lang="ar" [ngClass]="{ 'is-invalid':  city.errors && frm.submitted}" />
+                        <div *ngIf="city.invalid" class="invalid-feedback">
+                            <div *ngIf="city.errors.required!=null">أسم ألمدينة أو ألناحية مطلوب</div>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-3 offset-md-2">
+                        <label for="quarter" class="form-label">
+                           أسم ألحي أو ألمنطقة :
+                        </label>
+                        <input type="text" class="form-control" name="quarter" id="quarter" placeholder=""
+                            [(ngModel)]="employee.address.quarter" required #quarter="ngModel" 
+                            lang="ar" [ngClass]="{ 'is-invalid':  quarter.errors && frm.submitted}" />
+                        <div *ngIf="quarter.invalid" class="invalid-feedback">
+                            <div *ngIf="quarter.errors.required!=null">أسم ألحي أو ألمنطقة مطلوب</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 offset-md-1">
+                        <label for="nearestPlace" class="form-label">
+                           أقرب نقطة دالة :
+                        </label>
+                        <input type="text" class="form-control" name="nearestPlace" id="nearestPlace" placeholder=""
+                            [(ngModel)]="employee.address.nearestPlace" required #nearestPlace="ngModel" 
+                            lang="ar" [ngClass]="{ 'is-invalid':  city.errors && frm.submitted}" />
+                        <div *ngIf="nearestPlace.invalid" class="invalid-feedback">
+                            <div *ngIf="nearestPlace.errors.required!=null">اقرب نقطة دالة مطلوب</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="street" class="form-label">
+                            رقم ألمحلة:
+                        </label>
+                        <input type="text" class="form-control" name="street" id="street" placeholder=""
+                            [(ngModel)]="employee.address.street" required #street="ngModel" 
+                            lang="ar" [ngClass]="{ 'is-invalid':  street.errors && frm.submitted}" />
+                        <div *ngIf="street.invalid" class="invalid-feedback">
+                            <div *ngIf="street.errors.required!=null">حقل ألمحلة مطلوب</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 offset-md-2">
+                        <label for="street" class="form-label">
+                           ألزقاق:
+                        </label>
+                        <input type="text" class="form-control" name="substreet" id="substreet" placeholder=""
+                            [(ngModel)]="employee.address.subStreet" required #street="ngModel" 
+                            lang="ar" [ngClass]="{ 'is-invalid':  street.errors && frm.submitted}" />
+                        <div *ngIf="street.invalid" class="invalid-feedback">
+                            <div *ngIf="street.errors.required!=null">حقل ألمحلة مطلوب</div>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-3 offset-md-1">
+                        <label for="unitNumber" class="form-label">
+                           رقم ألدار :
+                        </label>
+                        <input type="text" class="form-control" name="unitNumber" id="unitNumber" placeholder=""
+                            [(ngModel)]="employee.address.unitNumber" required #unitNumber="ngModel" 
+                            lang="ar" [ngClass]="{ 'is-invalid':  unitNumber.errors && frm.submitted}" />
+                        <div *ngIf="unitNumber.invalid" class="invalid-feedback">
+                            <div *ngIf="unitNumber.errors.required!=null">رقم ألدار مطلوب </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row action-buttons">
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-success btn-block">
+                   <i class="fa fa-save pl-3"></i> حفظ ألمعلومات
+                </button>
+            </div>
+
+            <div class="col-md-3 offset-md-6">
+                <button type="button" class="btn btn-success btn-block" (click)="print()">
+                   <i class="fa fa-print pl-3"></i> طباعة ألمعلومات
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+

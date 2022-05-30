@@ -1,0 +1,140 @@
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <app-selectpicker 
+                    [values]="certificateService.getCountriesList()" 
+                    [selected]="item.country"
+                    [label]="'بلد ألدراسة'"
+                    (valueChange)="onCountryChange($event)">
+                </app-selectpicker>
+
+            </div>
+            <div class="col-md-4 " *ngIf="certificateService.isContryIraq(item.country)==true">
+                <app-selectpicker 
+                    [values]="certificateService.getProvincesList()" 
+                    [selected]="item.province"
+                    [label]="'ألمحافظة'"
+                    (valueChange)="certificateService.onProvinceChange($event,item)">
+                </app-selectpicker>
+            </div>
+            <div class="col-md-4" *ngIf="certificateService.isContryIraq(item.country)==true">
+                <label for="county" class="form-label">ألمدينة :</label>
+                <select  class="custom-select shadow-none" id="county" name="county"  [(ngModel)]="item.county"  required>
+                    <option *ngFor="let item of certificateService.getCities(item.province,item);let i=index;"  [value]="item" >
+                        {{item}}
+                    </option>
+                </select>                 
+            </div>
+            <div class="col-md-4" *ngIf="!certificateService.isContryIraq(item.country)==true">
+                    <label for="province" class="form-label">ألمحافظة أو ألولاية :</label>
+                    <input type="text" class="form-control" name="province" id="province" placeholder=""
+                                [(ngModel)]="item.province" required #province="ngModel"
+                                [ngClass]="{ 'is-invalid':  province.errors && certificateService.isCertificateFormSubmitted}">
+            </div>
+            <div class="col-md-4" *ngIf="!certificateService.isContryIraq(item.country)==true">
+                    <label for="county" class="form-label">ألمدينة :</label>
+                    <input type="text" class="form-control" name="county" id="county" placeholder=""
+                                [(ngModel)]="item.county" required #county="ngModel"
+                                [ngClass]="{ 'is-invalid':  county.errors && certificateService.isCertificateFormSubmitted}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <app-datepicker
+                    [input]="item.certificateDate"
+                    [name]="'certificateDate'" 
+                    [label]="'تاريخ ألحصول على ألشهادة'" 
+                    (dateChange)="item.certificateDate=$event">
+                </app-datepicker>
+            </div>
+            <div class="col-md-4" *ngIf="certificateService.isContryIraq(item.country)==false">
+                <label for="scholarship" class="form-label">نوع ألدراسة خارج ألقطر :</label>
+                <select  class="custom-select shadow-none" id="scholarship" name="scholarship"   [(ngModel)]="item.scholarshipType"  required>
+                    <option *ngFor="let scholarship of ScolarshipsTypes;let i=index;"  [value]="item.scholarshipType" >
+                        {{scholarship}}
+                    </option>
+                </select> 
+            </div>
+            <div class="col-md-4">
+                <label for="gpa" class="form-label">معدل ألتخرج (أختياري) :</label>
+                <div class="input-group">
+                    <input type="number" class="form-control" name="gpa" id="gpa" placeholder=""[(ngModel)]="item.gpa"  >
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-user-graduate" aria-hidden="true"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-0">
+            <div class="col-md-4 mt-2 ">
+                <div class="border-bottom">
+                    <label class="form-label mr-1"> نوع ألجامعة :</label>
+                </div>
+            </div>
+            <div class="col-md-4" *ngFor="let type of HighEducationTypes;let i=index">
+                <div class="icheck-greensea ml-3">
+                    <input class="box" type="radio" name="educationType_{{i}}"
+                        [(ngModel)]="item.educationType" [value]="type"
+                        id="educationType_{{i}}">
+                    <label for="educationType_{{i}}" class="px-5"> {{type}} </label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mt-2">
+                <div class="border-bottom">
+                    <label class="form-label mr-1"> ألدراسة :</label>
+                </div>
+            </div>
+            <div class="col-md-4" *ngFor="let type of HighStudyingTypes;let i=index">
+                <div class="icheck-greensea ml-3 my-2">
+                    <input class="box" type="radio" name="studyingType_{{i}}"
+                        [(ngModel)]="item.studyingType" [value]="type"
+                        id="studyingType_{{i}}">
+                    <label for="studyingType_{{i}}" class="px-5"> {{type}} </label>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="university" class="form-label">ألجامعة المانحة للشهادة :</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="university" id="university" placeholder=""
+                        [(ngModel)]="item.university" required #university="ngModel"
+                        [ngClass]="{ 'is-invalid':  university.errors && certificateService.isCertificateFormSubmitted}">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-school fa-xs"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="college" class="form-label">ألكلية :</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="college" id="college" placeholder=""
+                        [(ngModel)]="item.college" required #college="ngModel"
+                        [ngClass]="{ 'is-invalid':  college.errors && certificateService.isCertificateFormSubmitted}">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-university"></i></span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+                    <label for="department" class="form-label">ألقسم :</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="department" id="department" placeholder=""
+                            [(ngModel)]="item.department" required #department="ngModel"
+                            [ngClass]="{ 'is-invalid':  department.errors && certificateService.isCertificateFormSubmitted}">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-university"></i></span>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <app-files [Files]="item.Files" [header]="'ألوثائق و ألاوامر ألادارية'"></app-files>
+    </div>

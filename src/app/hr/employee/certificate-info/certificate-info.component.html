@@ -1,0 +1,80 @@
+<div class="wrapper">
+    <div cdkDropList #first class="contents m-7" id="container"
+        (cdkDropListDropped)="certificateService.dropCertificate($event)">
+        <div class="row border-bottom  warning-message"  *ngIf="!certificateService.Certificate.certificates.length">
+            <div class="col-sm-1 px-0">
+                <i class="fa fa-exclamation-triangle fa-2x text-danger"></i>
+            </div>
+            <div class="col-sm-11">
+                <p class="text-justify font-size-18">لم يتم أضافة أي شهادات خاصة بالموظف {{""}} . لأضافة شهادة جديدة أسحب ألشهادة ألمطلوبة من ألشريط ألموجود على أليسار وقم بأفلات ألعنصر أسفل هذه ألرسالة .</p>
+            </div>
+        </div>
+        <div class="content-container" *ngFor="let item of certificateService.Certificate.certificates;let i=index;"
+            [ngSwitch]="item.type" cdkDragLockAxis="y" cdkDrag>
+            <div class="card" id="certificate_{{i}}">
+                <div class="card-header">
+                    <h4 class="pr-1"> <i class="fa fa-certificate  px-2"></i> {{getTitle(item.type)}}</h4>
+                    <div class="icheck-greensea ml-3 my-2">
+                        <input class="box" type="checkbox"  [checked]="item.isCurrentCertificate==true"
+                            (change)="onCurrentCertificateChange(i,$event)"
+                            id="isCurrentCertificate_{{i}}">
+                        <label for="isCurrentCertificate_{{i}}" > ألشهادة ألحالية ؟ </label>
+                    </div>
+                    <div class="toolbar d-flex d-inline-flex w-30 justify-content-between">
+                        <button class="btn btn-print " (click)="prinThisCertificate('certificate_'+i)"
+                            title="طباعة ألشهادة">
+                            <i class="fa fa-print fa-1x"></i>
+                        </button>
+                        <button class="btn btn-close " (click)="certificateService.Certificate.removeCertificate(item)"
+                            title="حذف ألشهادة">
+                            <i class="fa fa-times fa-2x"></i>
+                        </button>
+                    </div>
+                </div>
+                <app-certificate-elementry *ngSwitchCase="'elementry'" [item]="item"></app-certificate-elementry>
+                <app-certificate-intermediate *ngSwitchCase="'intermediate'" [item]="item"></app-certificate-intermediate>
+                <app-certificate-highschool *ngSwitchCase="'highschool'" [item]="item"></app-certificate-highschool>
+                <app-certificate-diploma *ngSwitchCase="'diploma'" [item]="item"></app-certificate-diploma>
+                <app-certificate-undergraduate *ngSwitchCase="'bachelor'" [item]="item"></app-certificate-undergraduate>
+                <app-certificate-graduate *ngSwitchCase="'highdiploma'" [item]="item"></app-certificate-graduate>
+                <app-certificate-graduate *ngSwitchCase="'master'" [item]="item"></app-certificate-graduate>
+                <app-certificate-graduate *ngSwitchCase="'phd'" [item]="item"></app-certificate-graduate>
+
+            </div>
+        </div>
+        <div id="printarea"> </div>
+
+        <div class="row mt-18 action-buttons" *ngIf="certificateService.Certificate.certificates.length">
+            <div class="col-md-4">
+                <button type="submit" (click)="submit()" class="btn btn-success btn-block">
+                    <i class="fa fa-save pl-3"></i> حفظ ألمعلومات
+                </button>
+            </div>
+
+            <div class="col-md-4 offset-md-4">
+                <button type="button" class="btn btn-success btn-block" (click)="print()">
+                    <i class="fa fa-print pl-3"></i>طباعة ألشهادات
+                </button>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="drag-sidebar left-sidebar border-right">
+        <div class="drag-list" cdkDropList [cdkDropListConnectedTo]="['container']" id="controlsMenue"
+            [cdkDropListData]="certificateService.certificateTypes">
+            <div class="drag-item-box" *ngFor="let type of certificateService.certificateTypes; let i = index"
+                [cdkDragData]="type.type" cdkDrag [cdkDragDisabled]="certificateService.isCertificateMaxReached(type)">
+                <div class="drag-handle" cdkDragHandle>
+                    <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z">
+                        </path>
+                        <path d="M0 0h24v24H0z" fill="none"></path>
+                    </svg>
+                </div>
+                <span>{{type.title}}</span>
+            </div>
+        </div>
+    </div>
+</div>

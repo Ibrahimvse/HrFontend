@@ -1,6 +1,24 @@
-import { Component, OnInit, EventEmitter, Output, Input } from "@angular/core";
+import {
+    Component,
+    OnInit,
+    EventEmitter,
+    Output,
+    Input,
+    ViewChild,
+    ElementRef,
+    HostListener,
+} from "@angular/core";
 import { NgForm } from "@angular/forms";
-import { Files, DatabaseFile } from "../../classes/Files";
+import {
+    Files,
+    DatabaseFile,
+    ImageDimension,
+    ImageFile,
+} from "../../classes/Files";
+
+import {  
+    DomSanitizer  
+} from '@angular/platform-browser';
 //declare const $: any;
 @Component({
     selector: "app-files",
@@ -9,7 +27,7 @@ import { Files, DatabaseFile } from "../../classes/Files";
 })
 export class FilesComponent implements OnInit {
     @Input() Files: Files;
-    @Input() header:string;
+    @Input() header: string;
     DataFiles: Array<DatabaseFile> = [];
     constructor() {}
 
@@ -20,12 +38,63 @@ export class FilesComponent implements OnInit {
     }
 
     onChange(frm: NgForm) {}
-    onFileSelected(i: number, event:any) {
+    onFileSelected(i: number, event: any) {
         if (event.target.files.length > 0) {
             this.Files.Filelist[i] = <File>event.target.files[0];
         }
     }
-    removeDataFile(i:number){
-        this.DataFiles.splice(i,1)
+    removeDataFile(i: number) {
+        this.DataFiles.splice(i, 1);
+    }
+}
+
+@Component({
+    selector: "app-files-ImageFileUploader",
+    templateUrl: "./ImageFileUploader.html",
+    styleUrls: ["./files.component.scss"],
+})
+export class ImageFileUploader implements OnInit {
+    @Input() image: ImageFile;
+    @Input() dimensions: ImageDimension;
+    @Output("file") file: EventEmitter<ImageFile> = new EventEmitter();
+
+    @ViewChild("inputfile") private inputfile: ElementRef<HTMLInputElement>;
+    private isOver = false;
+    constructor(private sanitizer: DomSanitizer) {}
+    ngOnInit(): void {
+        console.log(this.image)
+    }
+
+    @HostListener("click") private onClick() {
+        this.inputfile.nativeElement.click();
+    }
+
+
+    @HostListener("drop", ["$event"]) private onDrop(event: DragEvent) {
+        this.onDrag(event);
+        if (event.dataTransfer.files) {
+            this.image.file = <File>event.dataTransfer.files[0];
+            this.image.url=this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(this.image.file));
+        }
+    }
+
+    onFileSelected(event: any) {
+        if (event.target.files.length > 0) {
+            this.image.file = <File>event.target.files[0];
+            this.image.url=this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(this.image.file));
+        }
+    }
+
+    @HostListener("drag", ["$event"])
+    @HostListener("dragstart", ["$event"])
+    @HostListener("dragenter", ["$event"])
+    @HostListener("dragover", ["$event"])
+    @HostListener("dragleave", ["$event"])
+    @HostListener("dragend", ["$event"])
+    private onDrag(event: DragEvent) {
+        event.stopPropagation();
+        event.preventDefault();
+
+        this.isOver = ["dragenter", "dragover"].includes(event.type);
     }
 }

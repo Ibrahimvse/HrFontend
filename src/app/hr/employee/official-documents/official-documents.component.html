@@ -1,0 +1,80 @@
+<div class="wrapper">
+    <div cdkDropList #first class="contents m-7" id="container"
+        (cdkDropListDropped)="documentService.dropDocument($event)">
+        <div class="row border-bottom  warning-message" *ngIf="!documentService.Documents.documents.length">
+            <div class="col-sm-1 px-0">
+                <i class="fa fa-exclamation-triangle fa-2x text-danger"></i>
+            </div>
+            <div class="col-sm-11">
+                <p class="text-justify font-size-18">لم يتم أضافة أي وثائق خاصة بالموظف {{""}} . لأضافة وثيقة جديدة أسحب
+                    ألوثيقة ألمطلوبة من ألشريط ألموجود على أليسار وقم بأفلات ألعنصر أسفل هذه ألرسالة .</p>
+            </div>
+        </div>
+
+        <div class="content-container official-documents" id="documents"
+            *ngFor="let item of documentService.Documents.documents;let i=index;" [ngSwitch]="item.type"
+            cdkDragLockAxis="y" cdkDrag>
+            <div class="card" [id]="item.type">
+                <div class="card-header">
+                    <h4 class="pr-1"> <i class="fa fa-id-card   px-2"></i> {{getTitle(item.type)}}</h4>
+                    <div class="toolbar d-flex d-inline-flex w-30 justify-content-between">
+                        <button class="btn btn-print " (click)="prinThisDocument(item.type)"
+                            title="طباعة ألوثيقة">
+                            <i class="fa fa-print fa-1x"></i>
+                        </button>
+                        <button class="btn btn-close " (click)="documentService.Documents.removeDocument(item)"
+                            title="حذف ألوثيقة">
+                            <i class="fa fa-times fa-2x"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <app-document-national-id *ngSwitchCase="'national-id'" [item]="item"></app-document-national-id>
+                    <app-document-civil-id *ngSwitchCase="'civil-id'" [item]="item"></app-document-civil-id>
+                    <app-document-university-id *ngSwitchCase="'university-id'" [item]="item"></app-document-university-id>
+                    <app-document-certificate-of-nationality *ngSwitchCase="'certificate-of-nationality'" [item]="item"></app-document-certificate-of-nationality>
+                    <app-document-ration-card *ngSwitchCase="'ration-card'" [item]="item"></app-document-ration-card>
+                    <app-document-address-card *ngSwitchCase="'address-card'" [item]="item"></app-document-address-card>
+                    <app-document-passport *ngSwitchCase="'passport'" [item]="item"></app-document-passport>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row mt-18 action-buttons" *ngIf="documentService.Documents.documents.length">
+            <div class="col-md-4">
+                <button type="submit" (click)="submit()" class="btn btn-success btn-block">
+                    <i class="fa fa-save pl-3"></i> حفظ ألمعلومات
+                </button>
+            </div>
+
+            <div class="col-md-4 offset-md-4">
+                <button type="button" class="btn btn-success btn-block" (click)="print()">
+                    <i class="fa fa-print pl-3"></i>طباعة ألوثائق
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="drag-sidebar left-sidebar border-right">
+        <div class="drag-list" cdkDropList [cdkDropListConnectedTo]="['container']" id="controlsMenue"
+            [cdkDropListData]="documentService.documentTypes">
+            <div class="drag-item-box" *ngFor="let type of documentService.documentTypes; let i = index"
+                [cdkDragData]="type.type" cdkDrag [cdkDragDisabled]="documentService.isDocumentMaxReached(type)">
+                <div class="drag-handle" cdkDragHandle>
+                    <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z">
+                        </path>
+                        <path d="M0 0h24v24H0z" fill="none"></path>
+                    </svg>
+                </div>
+                <span (click)="scroll(type.type)">{{type.title}}</span>
+
+                <button class="btn" [disabled]="documentService.isDocumentMaxReached(type)" (click)="documentService.addDocuments(type.type)" title="أضافة وثيقة جديدة">
+                    <i class="fa fa-plus-circle fa-1x"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,165 @@
+
+<div class="document-container">
+    <div class="row">
+        <div class="col-md-6 ">
+            <div class="d-flex d-inline-flex justify-content-between w-100 mt-2">
+                <div class="w-60">
+                    <div class="info">
+                        <label class="info-label-70 font-bold">ألدائرة</label>
+                        <span>:</span>
+                        <input type="text "   [(ngModel)]="item.office" class="textbox-inline" />
+                    </div>
+                    <div class="info">
+                        <label class="info-label-70 font-bold">ألسجل</label>
+                        <span>:</span>
+                        <input type="text "  [(ngModel)]="item.recordNumber"  class="textbox-inline" />
+                    </div>
+                    <div class="info">
+                        <label class="info-label-70 font-bold">ألصحيفة</label>
+                        <span>:</span>
+                        <input type="text "   [(ngModel)]="item.sheetNumber" class="textbox-inline" />
+                    </div>
+                </div>
+                <div class="w-40 justify-content-center">
+                    <div class="info text-center border-bottom border-dark">
+                        <label class="font-bold">رقم ألهوية </label>
+                    </div>
+                    <div class="info text-center">
+                        <input type="text "  [(ngModel)]="item.cardNumber"  class="textbox-inline  text-center" />
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12">
+                <div class="info">
+                    <label class="info-label-150 font-bold">ألاســــــم</label>
+                    <span>:</span>
+                    <input type="text"  [(ngModel)]="item.name" class="textbox-inline textbox-200" />
+                </div>
+                <div class="info">
+                    <label class="info-label-150 font-bold">أسم ألاب وألجد</label>
+                    <span>:</span>
+                    <input type="text"  [(ngModel)]="item.fatherName" class="textbox-inline textbox-200" />
+                </div>
+                <div class="info">
+                    <label class="info-label-150 font-bold">أسم ألام وألجد</label>
+                    <span>:</span>
+                    <input type="text"   [(ngModel)]="item.motherName" class="textbox-inline textbox-200" />
+                </div>
+                <div class="info">
+                    <label class="info-label-150 font-bold">أللقب</label>
+                    <span>:</span>
+                    <input type="text"  [(ngModel)]="item.sureName" class="textbox-inline textbox-200" />
+                </div>
+                <div class="info">
+                    <label class="info-label-150 font-bold">ألجنس</label>
+                    <span>:</span>
+                    <input type="text"  [(ngModel)]="item.gender" class="textbox-inline textbox-200" />
+                </div>
+                <div class="info">
+                    <label class="info-label-150 font-bold">أسم ألموظف ألمخول</label>
+                    <span>:</span>
+                    <input type="text"  [(ngModel)]="item.employeeName" class="textbox-inline textbox-200"  />
+                </div>
+                <div class="info">
+                    <label class="info-label-150 font-bold">تاريخ ألتنظيم</label>
+                    <span>:</span>
+                    <input type="text"  [(ngModel)]="item.issueDate" class="textbox-inline textbox-200" />
+                </div>
+                <div class="info">
+                    <label class="info-label-150 font-bold">أسم ألمنظم ألكامل</label>
+                    <span>:</span>
+                    <input type="text"  [(ngModel)]="item.officerName" class="textbox-inline textbox-200" />
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="col-md-5 offset-md-1">
+            <app-files-ImageFileUploader [image]="item.faceOne" [dimensions]="item.dimensions"></app-files-ImageFileUploader>
+        </div>
+    </div>
+    <hr>
+    <div class="row ">
+        <div class="col-md-6 mt-2">
+                <div class="info">
+                    <label class="info-label-150 font-bold">ألمهنة</label>
+                    <span>:</span>
+                    <input type="text"  [(ngModel)]="item.job" class="textbox-inline textbox-200" />
+                </div>
+                <div class="info">
+                    <label class="info-label-150 font-bold">ألديانة</label>
+                    <span>:</span>
+                    <input type="text"  [(ngModel)]="item.religion" class="textbox-inline textbox-200" />
+                </div>
+                <div class="info">
+                    <label class="info-label-150 font-bold">تاريخ ألولادة : <span class="float-left"> رقما</span></label>
+                    <span>:</span>
+                    <input type="text"   [(ngModel)]="item.dateOfBirth" class="textbox-inline textbox-200" />
+                </div>
+                <div class="info">
+                    <label class="info-label-150 text-left">كتابة</label>
+                    <span>:</span>
+                    <input type="text"  [(ngModel)]="item.dateOfBirthWritten" class="textbox-inline textbox-200" />
+                </div>
+                <div class="info">
+                    <label class="info-label-150 font-bold">محل ألولادة</label>
+                    <span>:</span>
+                    <input type="text"  [(ngModel)]="item.placeOfBirth" class="textbox-inline textbox-200" />
+                </div>
+                <div class="info">
+                    <label class="info-label-150 font-bold">ألعاهات ألظاهرة</label>
+                    <span>:</span>
+                    <input type="text"  [(ngModel)]="item.defects" class="textbox-inline textbox-200"  />
+                </div>
+                <div class="info">
+                    <label class="info-label-150 font-bold">ألحالة ألزوجية</label>
+                    <span>:</span>
+                    <input type="text"  [(ngModel)]="item.maritialStatus" class="textbox-inline textbox-200" />
+                </div>
+                <div class="info">
+                    <label class="info-label-150 font-bold">أسم ألزوج</label>
+                    <span>:</span>
+                    <input type="text"  [(ngModel)]="item.partenerName" class="textbox-inline textbox-200" />
+                </div>
+                <div class="info">
+                    <label class="info-label-150 font-bold">محل ألتسجيل</label>
+                    <span>:</span>
+                    <input type="text"  [(ngModel)]="item.placeOfRecording" class="textbox-inline textbox-200" />
+                </div>
+                <div class="info">
+                    <label class="info-label-150 font-bold">ألاوصاف</label>
+                </div>
+                <div class="info">
+                    <label class="info-label-150 font-bold pr-5">لون ألعين</label>
+                    <span>:</span>
+                    <input type="text"  [(ngModel)]="item.eyeColor" class="textbox-inline textbox-200" />
+                </div>
+                <div class="info">
+                    <label class="info-label-150 font-bold pr-5">لون ألوجه</label>
+                    <span>:</span>
+                    <input type="text"  [(ngModel)]="item.faceColor" class="textbox-inline textbox-200" />
+                </div>
+                <div class="info">
+                    <label class="info-label-150 font-bold pr-5">لون ألشعر</label>
+                    <span>:</span>
+                    <input type="text"  [(ngModel)]="item.hairColor" class="textbox-inline textbox-200" />
+                </div>
+                <div class="info">
+                    <label class="info-label-150 font-bold pr-5">ألطول</label>
+                    <span>:</span>
+                    <input type="text"  [(ngModel)]="item.length" class="textbox-inline textbox-200" />
+                </div>
+                <div class="info">
+                    <label class="info-label-150 font-bold pr-5">فصيلة ألدم</label>
+                    <span>:</span>
+                    <input type="text"  [(ngModel)]="item.blood" class="textbox-inline textbox-200" />
+                </div>
+
+
+        </div>
+        <div class="col-md-5 offset-md-1">
+            <app-files-ImageFileUploader [image]="item.faceTwo" [dimensions]="item.dimensions"></app-files-ImageFileUploader>
+        </div>
+    </div>
+</div>

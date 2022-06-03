@@ -1,0 +1,6 @@
+<input  #inputfile type="file" class="file" (change)="onFileSelected($event)">
+<div style="width: 100%;" [style.height]="dimensions.height" class="image-drag-drop " [ngClass]="{'url':image.url}">
+    <div *ngIf="image.url">
+        <img [src]="image.url" class="rounded"  />
+    </div>    
+</div>

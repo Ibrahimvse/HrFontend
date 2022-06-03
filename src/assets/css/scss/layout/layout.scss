@@ -3,8 +3,8 @@ $header-bg-color:#1b1b1b;
 $title-color:#f8f9fa;
 $footer-color:#f8f9fa;
 $title-light: #74e035;
-$fontcolor:$cyan;
-$bg-header:darken($light,2%);
+
+
 .wrapper{
     display: flex;
     width: 100%;
@@ -17,9 +17,9 @@ $bg-header:darken($light,2%);
     min-width: 292px;
     max-width: 292px;
 
-    background: $bg-header;
+    background: $layout-bg-color;
     border-left: 2px solid lighten(black,60%);
-    color:$fontcolor;
+    color:$standard-fontcolor;
     transition: all 0.5s cubic-bezier(0.945, 0.02, 0.27, 0.665);
     transform-origin: bottom right;
 
@@ -27,12 +27,11 @@ $bg-header:darken($light,2%);
         height:45px !important;
         line-height: 45px !important;
         width:100%;
-        color:$fontcolor;
-        background: $bg-header;
+        background: $layout-bg-color;
         padding-top: 10px;
         padding-right: 20px;
         
-        color: seagreen;
+        color: $standard-fontcolor;
         i{
             margin-left: 19px !important;
         }
@@ -40,7 +39,7 @@ $bg-header:darken($light,2%);
     ul{
         
         li{
-            color: seagreen;
+            color:$dark;
             line-height: 45px;
             border-top: 1px solid black;
             border-bottom: 1px solid rgba(255,255,255,.1);
@@ -56,8 +55,13 @@ $bg-header:darken($light,2%);
                 transition: all 0.2s ease;
                 cursor: pointer;
                 font-size: 18px;
+
                 &:hover{
                     padding-right: 20px;
+                    color:$active-standard-fontcolor !important;
+                }
+                i{
+                    color:$lighten-standard-fontcolor !important;
                 }
             }
             &:last-child{
@@ -86,19 +90,19 @@ $bg-header:darken($light,2%);
 }
 .active{
     background:lighten($bg-color,5%);
+    color:$active-standard-fontcolor !important;
 }
 .page-header{
     height:46px !important;
     line-height: 46px !important;
     width:100%;
-    color:$fontcolor;
-    background: $bg-header;
+    background: $layout-bg-color;
     border-bottom: 1px solid black;
     padding-top: 10px;
     padding-right: 45px;
-    color: seagreen;
+    color: $dark;
     button{
-        color:$fontcolor;
+        color:$standard-fontcolor;
         outline: 0;
         padding: 0px;
         i{
@@ -111,7 +115,7 @@ $bg-header:darken($light,2%);
     height:45px;
     line-height: 45px;
     width:100%;
-    background: $bg-header;
+    background: $layout-bg-color;
     padding: 4px 10px;
     border-bottom: 1px solid black;
     button,.btn{
@@ -205,6 +209,18 @@ table{
     font-family: cairo !important;
     button{
         min-width: 150px !important;
+    }
+}
+
+.warning-message{
+    padding: 20px 20px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
+    p{
+        text-align: justify;
+        text-justify: inter-word;
+        font-size: 16px;
     }
 }
 

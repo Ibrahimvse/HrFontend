@@ -9,9 +9,9 @@
                 <p class="text-justify font-size-18">لم يتم أضافة أي شهادات خاصة بالموظف {{""}} . لأضافة شهادة جديدة أسحب ألشهادة ألمطلوبة من ألشريط ألموجود على أليسار وقم بأفلات ألعنصر أسفل هذه ألرسالة .</p>
             </div>
         </div>
-        <div class="content-container" *ngFor="let item of certificateService.Certificate.certificates;let i=index;"
+        <div class="content-container" id="certificates" *ngFor="let item of certificateService.Certificate.certificates;let i=index;"
             [ngSwitch]="item.type" cdkDragLockAxis="y" cdkDrag>
-            <div class="card" id="certificate_{{i}}">
+            <div class="card" [id]="item.type">
                 <div class="card-header">
                     <h4 class="pr-1"> <i class="fa fa-certificate  px-2"></i> {{getTitle(item.type)}}</h4>
                     <div class="icheck-greensea ml-3 my-2">
@@ -42,7 +42,7 @@
 
             </div>
         </div>
-        <div id="printarea"> </div>
+        <div id="printarea" class="content-container"> </div>
 
         <div class="row mt-18 action-buttons" *ngIf="certificateService.Certificate.certificates.length">
             <div class="col-md-4">
@@ -57,8 +57,6 @@
                 </button>
             </div>
         </div>
-
-
     </div>
     <div class="drag-sidebar left-sidebar border-right">
         <div class="drag-list" cdkDropList [cdkDropListConnectedTo]="['container']" id="controlsMenue"
@@ -73,7 +71,10 @@
                         <path d="M0 0h24v24H0z" fill="none"></path>
                     </svg>
                 </div>
-                <span>{{type.title}}</span>
+                <span  (click)="scroll(type.type)">{{type.title}}</span>
+                <button class="btn" [disabled]="certificateService.isCertificateMaxReached(type)" (click)="certificateService.addCertificate(type.type)" [title]="'أضافة ' +type.title">
+                    <i class="fa fa-plus-square fa-1x"></i>
+                </button>
             </div>
         </div>
     </div>

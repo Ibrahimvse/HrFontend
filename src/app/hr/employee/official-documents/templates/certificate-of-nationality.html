@@ -1,0 +1,74 @@
+<div class="document-container">
+    <div class="row justify-content-center">
+        <div class="col-md-12 ">
+            <app-files-ImageFileUploader [image]="item.faceOne" [dimensions]="item.dimensions"></app-files-ImageFileUploader>
+        </div>
+    </div>
+    <hr>
+    <div class="row justify-content-center">
+        <div class="col-md-6 mt-3">
+            <div class="info">
+                <label class="info-label" > رقم ألمحفظة</label>
+                <span>/</span>
+                <input type="text" [(ngModel)]="item.walletNumber" class="textbox-inline textbox-200">
+            </div>
+
+            <div class="info">
+                <label class="info-label" > رقم ألشهادة</label>
+                <span>/</span>
+                <input type="text" [(ngModel)]="item.certificateNumber" class="textbox-inline textbox-200">
+            </div>
+            
+            <div class="info mt-3">
+                <label class="info-label" > ألتاريخ</label>
+                <span>:</span>
+                <input type="text" [(ngModel)]="item.certificateDate" class="textbox-inline textbox-200">
+            </div>
+            <div class="info mt-5">
+                <label class="info-label" > ألاسم</label>
+                <span>:</span>
+                <input type="text" [(ngModel)]="item.name" class="textbox-inline textbox-200">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="info mt-3">
+                <label class="info-label-150" > محل وتاريخ ألولادة</label>
+                <span>:</span>
+                <input type="text" [(ngModel)]="item.dateAndPlaceOfBirth" class="textbox-inline textbox-200">
+            </div>
+
+            <div class="info mt-1">
+                <label class="info-label-150" > ألديانة</label>
+                <span>:</span>
+                <input type="text" [(ngModel)]="item.religion" class="textbox-inline textbox-200">
+            </div>
+            
+            <div class="info mt-1">
+                <label class="info-label-150" > ألعلامات ألفارقة</label>
+                <span>:</span>
+                <input type="text" [(ngModel)]="item.defects" class="textbox-inline textbox-200">
+            </div>
+            <div class="info mt-1">
+                <label class="info-label-150" >أسم ألاب ألكامل</label>
+                <span>:</span>
+                <input type="text" [(ngModel)]="item.fatherName" class="textbox-inline textbox-200">
+            </div>
+            <div class="info mt-1">
+                <label class="info-label-150" > محل ولادته</label>
+                <span>:</span>
+                <input type="text" [(ngModel)]="item.fatherPlaceOfBirth" class="textbox-inline textbox-200">
+            </div>
+            <div class="info mt-1">
+                <label class="info-label-150" >أسم ألأم ألكامل</label>
+                <span>:</span>
+                <input type="text" [(ngModel)]="item.motherName" class="textbox-inline textbox-200">
+            </div>
+            <div class="info mt-1">
+                <label class="info-label-150" > محل ولادتها</label>
+                <span>:</span>
+                <input type="text" [(ngModel)]="item.motherPlaceOfBirth" class="textbox-inline textbox-200">
+            </div>
+
+        </div>
+    </div>
+</div>

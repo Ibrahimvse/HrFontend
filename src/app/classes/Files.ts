@@ -1,3 +1,4 @@
+import {SafeUrl} from '@angular/platform-browser'
 export class Files{
     Filelist:Array<File>=[];
     addFile() {
@@ -27,4 +28,14 @@ export class DatabaseFile{
     filename:string="وثيقة دراسية";
     filetype:string="pdf";
     size:string="3.2";
+}
+
+export class ImageFile{
+    file:File=new File([""], "", {type: "",})
+    url:SafeUrl=null
+}
+
+export interface ImageDimension{
+    width:string;
+    height:string;
 }

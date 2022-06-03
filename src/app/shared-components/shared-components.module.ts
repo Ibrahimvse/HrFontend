@@ -7,7 +7,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { BsDatepickerModule, BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
 import { DatepickerComponent,SelectpickerComponent } from './controls/controls';
-import { FilesComponent } from './files/files.component';
+import { FilesComponent,ImageFileUploader } from './files/files.component';
 
 
 
@@ -15,7 +15,8 @@ import { FilesComponent } from './files/files.component';
   declarations: [
     DatepickerComponent,
     SelectpickerComponent,
-    FilesComponent
+    FilesComponent,
+    ImageFileUploader
   ],
   imports: [
     CommonModule,
@@ -28,6 +29,7 @@ import { FilesComponent } from './files/files.component';
     DatepickerComponent,
     SelectpickerComponent,
     FilesComponent,
+    ImageFileUploader
     
   ],
   providers: [BsDatepickerConfig]

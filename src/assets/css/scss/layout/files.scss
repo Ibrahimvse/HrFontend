@@ -1,0 +1,131 @@
+$dark: #333e48;
+$danger: #de4437;
+$gray: #8c98a4;
+
+$bg-color: #1e1e1e;
+$header-bg-color: #1b1b1b;
+$blackboard-color: #333e48;
+$blackboard-color: lighten($bg-color, 10%);
+$title-light: #a3d133;
+$title-light-transparent: rgba(0, 255, 0, 0);
+$color-green: #a3d133;
+$color-danger: #de4437;
+$menu-width: 450px;
+$item-width: 200px;
+.file {
+    visibility: hidden;
+    position: absolute;
+}
+
+.btn.btn-primary {
+    width: 150px;
+    background-color: seagreen;
+
+    outline: none;
+    color: #fff;
+    i {
+        margin-top: 0px;
+        padding-left: 10px;
+    }
+}
+
+.close-container {
+    .btn-close {
+        i {
+            color: $gray;
+            margin-top: 8px;
+            &:hover {
+                color: $danger;
+            }
+        }
+    }
+}
+
+.download-container{
+    .row{
+        line-height: 40px;
+        height: 40px;
+        border-radius: 20px 0px 20px 0px;
+    }
+    span{
+        font-size: 15px;
+        &.file-id{
+            margin-left: 15px;
+        }
+
+    }
+
+    i{
+        padding-bottom: 3px;
+    }
+    .fa-trash {
+        color: $gray;
+        font-size: 20px;
+        margin-top: 0px !important;
+        &:hover {
+            color: $danger;
+            cursor:pointer;
+        }
+    }
+    .fa-download,.fa-file-pdf,.fa-file-image {
+        color:seagreen ;
+        margin-top: 8px;
+        font-size: 18px;
+        &:hover {
+            color: $gray;
+            cursor:pointer;
+        }
+        .fa-file-pdf,.fa-file-image{
+            padding-top: 15px !important;
+        }
+    }
+}
+
+.header{
+    padding: 0px 0px;
+    h4{
+        //border-bottom:1px solid $gray;
+        line-height: 40px;
+        height: 40px;
+        padding: 0px;
+        margin: 0px;
+        color: inherit;
+        padding: 0px ;
+        span{
+            font-size: 16px;
+        }
+        i{
+            color:$gray;
+            padding-left: 10px;
+        }
+    }
+
+}
+
+.image-drag-drop{
+    border: 1px dashed red;
+    border-radius: 10px;  
+    display: inline-block;
+    overflow: hidden; 
+    position: relative; 
+    img{
+        display: block;
+        position: absolute;
+        min-height: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+.url{
+    border: 2px solid $lighten-standard-fontcolor;
+
+}
+
+
+@media print{
+    .files{
+        visibility: hidden;
+        display: none;
+    }
+}

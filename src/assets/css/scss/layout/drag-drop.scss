@@ -3,9 +3,9 @@
     min-width: 292px;
     max-width: 292px;
 
-    background: darken($bg-header,1%);
+    background: $layout-bg-color;
     border-left: 2px solid lighten(black,60%);
-    color:$fontcolor;
+    color:$standard-fontcolor;
     transition: all 0.5s cubic-bezier(0.945, 0.02, 0.27, 0.665);
     transform-origin: bottom right;
 
@@ -19,9 +19,10 @@
         display: block;
 
         .drag-item-box {
+            position: relative;
             padding: 0px 20px;
             border-bottom: 1px solid black;
-            color: seagreen;
+            color: $standard-fontcolor;
             height: 48px;
             display: flex;
             flex-direction: row;
@@ -30,6 +31,7 @@
             font-size: 18px;
             span{
                 transition: all 0.2s ease;
+                cursor: pointer;
             }
             &:hover{
                 background: white;
@@ -45,23 +47,36 @@
                 height: 30px;
                 margin-right: 10px;
                 margin-left: 20px;
-                color:$gray-dark;
+                color:$lighten-standard-fontcolor;
+                :hover{
+                    color:green;
+                }
                 
             }
-            &.cdk-drag-disabled{
-                color:$dark;
-                cursor: default;
-                .drag-handle {
-                    cursor: default !important;
-                    color:$green;
-                    &:hover{
-                        color:$danger;
-                    }
+            button{
+                position: absolute;
+                top:0px;
+                font-size: 22px;
+                left:0px;
+                color:$lighten-standard-fontcolor;
+                :hover{
+                    color:green;
                 }
+            }
+            &.cdk-drag-disabled{
+                color:green;
+                cursor: default;
                 &:hover{
                     background: none;
                     span{
                         margin-right: 0px;
+                    }
+                }
+                button,.drag-handle{
+                    color:green;
+                    cursor: default;
+                    :hover{
+                        color:$danger;
                     }
                 }
             }
@@ -90,6 +105,9 @@
         padding-left: 10px;
         padding-right: 10px;
     }
+    button{
+        display: none;
+    }
 }
   
 .cdk-drag-placeholder {
@@ -110,6 +128,9 @@
         padding-left: 10px;
         padding-right: 10px;
     }
+    button{
+        display: none;
+    }
 }
   
 .cdk-drag-animating {
@@ -119,5 +140,11 @@
 @media print{
     .drag-sidebar{
         display:none;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    .drag-sidebar,.sidebar{
+        display: none;
     }
 }

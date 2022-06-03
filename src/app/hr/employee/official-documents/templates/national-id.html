@@ -1,0 +1,96 @@
+
+<div class="document-container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row justify-content-center  ">
+                <div class="col-md-6">
+                    <label class="text-center w-100  my-0">ألبطاقه ألوطنية</label>
+                    <input type="text" [(ngModel)]="item.nationalIdNumber" class="mb-2 border text-center textbox-block font-bold" dir="ltr" />
+                </div>
+            </div>
+            <div class="info ">
+                <label class="info-label">ألاسم</label>
+                <span>:</span>
+                <input type="text" [(ngModel)]="item.name" class="textbox-inline " />
+            </div>
+            <div class="info ">
+                <label class="info-label">ألاب</label>
+                <span>:</span>
+                <input type="text" [(ngModel)]="item.father" class="textbox-inline " />
+                
+            </div>
+            <div class="info ">
+                <label class="info-label">ألجد</label>
+                <span>:</span>
+                <input type="text" [(ngModel)]="item.grandFather" class="textbox-inline " />
+            </div>
+            <div class="info ">
+                <label class="info-label">أللقب</label>
+                <span>:</span>
+                <input type="text" [(ngModel)]="item.sureName" class="textbox-inline " />
+            </div>
+            <div class="info ">
+                <label class="info-label">ألام</label>
+                <span>:</span>
+                <input type="text" [(ngModel)]="item.mother" class="textbox-inline " />
+            </div>
+            <div class="info ">
+                <label class="info-label">ألجد</label>
+                <span>:</span>
+                <input type="text" [(ngModel)]="item.grandMother" class="textbox-inline " />
+            </div>
+            <div class="info ">
+                <label class="info-label">ألجنس</label>
+                <span>:</span>
+                <input type="text" [(ngModel)]="item.gender" class="textbox-inline " />
+            </div>
+            <div class="info ">
+                <label class="info-label">فصيلة ألدم</label>
+                <span>:</span>
+                <input type="text"  [(ngModel)]="item.bloodCategory" class="textbox-inline" />
+                <input type="text"  [(ngModel)]="item.idNumber" class="textbox-inline text-center border float-left font-bold" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <app-files-ImageFileUploader [image]="item.faceOne" [dimensions]="item.dimensions"></app-files-ImageFileUploader>
+        </div>
+    </div>
+    <hr>
+    <div class="row ">
+        <div class="col-md-6 mt-5">
+            <div class="info ">
+                <label class="info-label">جهة ألاصدار</label>
+                <span>:</span>
+                <input type="text"  [(ngModel)]="item.issuer" class="textbox-long font-bold" />
+            </div>
+            <div class="info ">
+                <label class="info-label">تاريخ ألاصدار</label>
+                <span>:</span>
+                <input type="text"  [(ngModel)]="item.issueDate" class="textbox-long font-bold" />
+            </div>
+            <div class="info ">
+                <label class="info-label">تاريخ ألنفاذ</label>
+                <span>:</span>
+                <input type="text"  [(ngModel)]="item.expirationDate" class="textbox-long font-bold" />
+            </div>
+            <div class="info ">
+                <label class="info-label">محل ألولادة</label>
+                <span>:</span>
+                <input type="text"  [(ngModel)]="item.placeOfBirth" class="textbox-long font-bold" />
+            </div>
+            <div class="info ">
+                <label class="info-label">تاريخ ألولادة</label>
+                <span>:</span>
+                <input type="text"  [(ngModel)]="item.dateOfBirth" class="textbox-long font-bold" />
+            </div>
+            <div class="info ">
+                <label class="info-label">ألرقم ألعائلي </label>
+                <span>:</span>
+                <input type="text"  [(ngModel)]="item.familyIdNumber" class="textbox-long font-bold" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <app-files-ImageFileUploader [image]="item.faceTwo" [dimensions]="item.dimensions"></app-files-ImageFileUploader>
+        </div>
+    </div>
+</div>

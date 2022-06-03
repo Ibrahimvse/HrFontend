@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { MyinfoComponent } from './myinfo/myinfo.component';
 import { BacicInfoComponent } from './bacic-info/bacic-info.component';
 import { CertificateInfoComponent } from './certificate-info/certificate-info.component';
+import { OfficialDocumentsComponent } from './official-documents/official-documents.component';
 
 const routes: Routes = [
     {
@@ -26,6 +27,10 @@ const routes: Routes = [
                     {
                         path:"certificates",
                         component:CertificateInfoComponent
+                    },
+                    {
+                        path:"officialdocuments",
+                        component:OfficialDocumentsComponent
                     }
                 ]
             },

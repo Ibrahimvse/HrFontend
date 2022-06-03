@@ -124,7 +124,6 @@ export class CerificateService {
     }
     dropCertificate(event: CdkDragDrop<string>) {
         if (event.previousContainer !== event.container) {
-            console.log(event.item.data);
             this.addCertificate(event.item.data);
             var length = this.Certificate.certificates.length;
             var previousIndex = length > 0 ? length - 1 : 0;

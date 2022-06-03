@@ -5,6 +5,8 @@
 @import './layout/card.scss';
 @import './layout/drag-drop.scss';
 @import './layout/topheader.scss';
+@import './layout/official-documents.scss';
+@import './layout/files.scss';
 @import './spaces/spaces.scss';
 @import './print.scss';
 
@@ -59,4 +61,9 @@ input:read-only {
 .form-control:focus {
   box-shadow: none;
   border: 1px solid green;
+}
+input:disabled{
+  background-color: transparent!important;
+  color:inherit;
+
 }

@@ -33,12 +33,13 @@ export class CertificateInfoComponent implements OnInit {
     print() {
         window.print();
     }
+    scroll(id:string){
+        let el = document.getElementById(id);
+        el.scrollIntoView({behavior: 'smooth'});   
+    }
     prinThisCertificate(id: string) {
-        $("#"+id).clone().appendTo("#printarea");
-        $(".content-container").addClass("d-none")
-        window.print()
-        $(".content-container").addClass("d-block")
-        $("#printarea").empty()
+
+       
     }
 
     onCurrentCertificateChange(i: number, event: any) {

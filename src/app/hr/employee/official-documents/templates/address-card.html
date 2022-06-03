@@ -1,0 +1,80 @@
+
+<div class="document-container">
+    <div class="row">
+        <div class="col-md-6 mt-16">
+            <div class="info">
+                <label class="info-label-150">مكتب معلومات </label>
+                <span>:</span>
+                <input type="text" [(ngModel)]="item.informationOffice" class="textbox-inline textbox-200" />
+            </div>
+            <div class="info">
+                <label class="info-label-150">أسم رب ألاسرة </label>
+                <span>:</span>
+                <input type="text" [(ngModel)]="item.householdName" class="textbox-inline textbox-200" />
+            </div>
+            <div class="info">
+                <label class="info-label-150"> عنوان ألسكن </label>
+                <span>:</span>
+                <span class="font-bold pl-1 text-secondary">م</span>
+                <input type="text" [(ngModel)]="item.address.m" class="textbox-inline textbox-30 text-center" />
+                <span class="font-bold px-1 text-secondary">ز</span>
+                <input type="text" [(ngModel)]="item.address.z" class="textbox-inline textbox-30 text-center" />
+                <span class="font-bold px-1 text-secondary">د</span>
+                <input type="text" [(ngModel)]="item.address.d" class="textbox-inline textbox-30 text-center" />
+            </div>
+            <div class="info">
+                <label class="info-label-150">رقم ألاستماره </label>
+                <span>:</span>
+                <input type="text" [(ngModel)]="item.cardNumber" class="textbox-inline textbox-200" />
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <app-files-ImageFileUploader [image]="item.faceOne" [dimensions]="item.dimensions"></app-files-ImageFileUploader>
+        </div>
+    </div>
+    <hr>
+    <div class="row ">
+        <div class="col-md-6 mt-4">
+            <div class="d-flex d-inline-flex justify-content-between w-100">
+                <div class="w-50">
+                    <div class="info">
+                        <label class="font-bold">نموذج </label>
+                        <span>(</span>
+                        <input type="text " [(ngModel)]="item.cardType" class="textbox-inline textbox-30 text-center" />
+                        <span>)</span>
+                    </div>
+                </div>
+                <div class="justify-content-center  w-50">
+                    <div class="info text-center">
+                        <label class="font-bold">نموذج </label>
+                        <span>/</span>
+                        <input type="text " [(ngModel)]="item.char" class="textbox-inline textbox-30 text-center" />
+                    </div>
+                    <div class="info text-center">
+                        <label class="font-bold">ألتسلسل </label>
+                        <span>/</span>
+                    </div>
+                    <div class="info text-center">
+                        <input type="text " [(ngModel)]="item.sequence" class="textbox-inline  text-center" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="info mt-4">
+                <label class="info-label-150">تاريخ تنظيم ألاستمارة</label>
+                <span>:</span>
+                <input type="text"  [(ngModel)]="item.issueDate" class="textbox-inline textbox-200" />
+            </div>
+
+            <div class="info">
+                <label class="info-label-150">أسم منظم ألأستمارة</label>
+                <span>:</span>
+                <input type="text"  [(ngModel)]="item.officerName" class="textbox-inline textbox-200" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <app-files-ImageFileUploader [image]="item.faceTwo" [dimensions]="item.dimensions"></app-files-ImageFileUploader>
+        </div>
+    </div>
+</div>

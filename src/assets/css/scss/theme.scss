@@ -7,6 +7,7 @@
 @import './layout/topheader.scss';
 @import './layout/official-documents.scss';
 @import './layout/files.scss';
+@import './layout/collapsing.scss';
 @import './spaces/spaces.scss';
 @import './print.scss';
 
@@ -57,10 +58,14 @@ input:read-only {
 .bootstrap-select .dropdown-toggle:focus {
   outline: 0 !important;
   box-shadow: none;
+  background: transparent;
 }
 .form-control:focus {
   box-shadow: none;
   border: 1px solid green;
+}
+.form-control {
+  box-shadow: none;
 }
 input:disabled{
   background-color: transparent!important;

@@ -69,10 +69,11 @@
                         <path d="M0 0h24v24H0z" fill="none"></path>
                     </svg>
                 </div>
+                <i class="fas fa-check-square  checked-item" aria-hidden="true" ></i>
                 <span (click)="scroll(type.type)">{{type.title}}</span>
 
                 <button class="btn" [disabled]="documentService.isDocumentMaxReached(type)" (click)="documentService.addDocuments(type.type)" title="أضافة وثيقة جديدة">
-                    <i class="fa fa-plus-circle fa-1x"></i>
+                    <i class="fa fa-plus-square fa-1x"></i>
                 </button>
             </div>
         </div>

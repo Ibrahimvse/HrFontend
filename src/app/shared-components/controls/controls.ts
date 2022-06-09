@@ -1,4 +1,9 @@
 import { Component, OnInit, EventEmitter, Output, Input,AfterViewInit , OnChanges, SimpleChanges} from "@angular/core";
+import {defineLocale} from 'ngx-bootstrap/chronos'
+import {BsLocaleService} from 'ngx-bootstrap/datepicker'
+import {arLocale} from 'ngx-bootstrap/locale'
+defineLocale('ar',arLocale)
+
 declare const $: any;
 
 class util{
@@ -9,20 +14,6 @@ class util{
     static setElementLabel(label:string):string{
         return label+" : "
      }
-
-    getDateStringValue(dateObj:Date): string {
-        var month =
-            dateObj.getMonth() +1 < 10
-                ? "0" + (dateObj.getMonth() + 1)
-                : dateObj.getMonth() + 1; //months from 1-12
-        var day =
-            dateObj.getDate() < 10
-                ? "0" + (dateObj.getDate() )
-                : dateObj.getDate() ;
-        var year = dateObj.getFullYear();
-        var value= year + "-" + month + "-" + day;
-        return value
-    }
 }
 @Component({
     selector: "app-datepicker",
@@ -36,7 +27,9 @@ export class DatepickerComponent implements OnInit {
     @Input() max: Date;
     @Output() dateChange = new EventEmitter<Date>();
     id: string="";
-    constructor() {}
+    constructor(private bsLocaleService:BsLocaleService) {
+        this.bsLocaleService.use('ar')
+    }
 
     ngOnInit(): void {
         this.id = util.setElementId(this.name);

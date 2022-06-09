@@ -29,9 +29,11 @@ export class FilesComponent implements OnInit {
     @Input() Files: Files;
     @Input() header: string;
     DataFiles: Array<DatabaseFile> = [];
+    id:string="files"
     constructor() {}
 
     ngOnInit(): void {
+        this.id=this.setElementId("files");
         this.DataFiles.push(new DatabaseFile());
         this.DataFiles.push(new DatabaseFile());
         this.DataFiles.push(new DatabaseFile());
@@ -46,6 +48,11 @@ export class FilesComponent implements OnInit {
     removeDataFile(i: number) {
         this.DataFiles.splice(i, 1);
     }
+
+    setElementId(name:string):string{
+        var id = name + Math.round(Math.random() * 100000);
+         return id;
+     }
 }
 
 @Component({

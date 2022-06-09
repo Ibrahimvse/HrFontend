@@ -71,6 +71,7 @@
                         <path d="M0 0h24v24H0z" fill="none"></path>
                     </svg>
                 </div>
+                <i class="fas fa-check-square  checked-item" aria-hidden="true" ></i>
                 <span  (click)="scroll(type.type)">{{type.title}}</span>
                 <button class="btn" [disabled]="certificateService.isCertificateMaxReached(type)" (click)="certificateService.addCertificate(type.type)" [title]="'أضافة ' +type.title">
                     <i class="fa fa-plus-square fa-1x"></i>

@@ -18,10 +18,10 @@ export class CerificateService {
         { title: "شهادة ألمتوسطة", type: "intermediate", max: 1 },
         { title: "شهادة ألاعدادية", type: "highschool", max: 1 },
         { title: "شهادة معهد", type: "diploma", max: 1 },
-        { title: "شهادة بكالوريوس", type: "bachelor", max: 2 },
-        { title: "شهادة دبلوم عالي", type: "highdiploma", max: 2 },
-        { title: "شهادة ماجستير", type: "master", max: 2 },
-        { title: "شهادة دكتوراة", type: "phd", max: 1 },
+        { title: "شهادة بكالوريوس", type: "bachelor", max: 1 },
+        { title: "شهادة دبلوم عالي", type: "highdiploma", max: 1 },
+        { title: "شهادة ماجستير", type: "master", max: 1},
+        { title: "شهادة دكتوراة", type: "phd", max: 1},
     ];
     isCertificateFormSubmitted: boolean = false;
     Certificate: Certificate = new Certificate();

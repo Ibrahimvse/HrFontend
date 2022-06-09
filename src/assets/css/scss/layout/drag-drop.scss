@@ -31,7 +31,7 @@
             font-size: 18px;
             span{
                 transition: all 0.2s ease;
-                cursor: pointer;
+                cursor: default;
             }
             &:hover{
                 background: white;
@@ -53,6 +53,9 @@
                 }
                 
             }
+            .checked-item{
+                display: none;
+            }
             button{
                 position: absolute;
                 top:0px;
@@ -64,20 +67,28 @@
                 }
             }
             &.cdk-drag-disabled{
-                color:green;
+                
                 cursor: default;
                 &:hover{
-                    background: none;
                     span{
-                        margin-right: 0px;
+                        color:rgb(8, 124, 8);
+                        cursor:pointer;
                     }
                 }
                 button,.drag-handle{
-                    color:green;
-                    cursor: default;
-                    :hover{
-                        color:$danger;
-                    }
+                    display: none;
+                }
+                .drag-handle{
+                    display: none;
+                    
+                }
+                .checked-item{
+                    display: block;
+                    font-size: 23px !important;
+                    color:seagreen;
+                    padding-left: 28px;
+                    padding-right: 13px;
+                    border-radius: 0px !important;
                 }
             }
 
@@ -105,7 +116,7 @@
         padding-left: 10px;
         padding-right: 10px;
     }
-    button{
+    button,.checked-item{
         display: none;
     }
 }
@@ -128,9 +139,10 @@
         padding-left: 10px;
         padding-right: 10px;
     }
-    button{
+    button,.checked-item{
         display: none;
     }
+
 }
   
 .cdk-drag-animating {

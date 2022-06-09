@@ -1,91 +1,98 @@
 <div class="files">
-    <div class="row  header" *ngIf="header">
+    <div class="row  header mb-0" *ngIf="header">
         <div class="col-md-12">
-            <h4 class="border-bottom"> <i class="fa fa-file-alt "></i><span class="text-secondary">{{header + ' :'}}</span></h4>
+            <h4 class="border w-100">
+                <a [href]="'#'+id" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa fa-file-alt "></i><span class="text-secondary">{{header + ' :'}}</span>
+                </a>
+                
+            </h4>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4">
-            <button type="submit" class="btn btn-success btn-block" (click)="Files.addFile()">
-                <i class="fa fa-upload pl-1"></i> أضافة ملفات
-            </button>
+    <div class="collapse " [id]="id">
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-success btn-block" (click)="Files.addFile()">
+                    <i class="fa fa-upload px-2"></i>رفع ملفات جديدة
+                </button>
+            </div>
+    
+            <div class="col-md-4 offset-md-4">
+                <button type="button" class="btn btn-success btn-block" [disabled]="DataFiles.length==0">
+                    <i class="fa fa-download px-2"></i>تنزيل ألملفات
+                </button>
+            </div>
         </div>
 
-        <div class="col-md-4 offset-md-4">
-            <button type="button" class="btn btn-success btn-block">
-                <i class="fa fa-download pl-1"></i> تحميل ملفات
-            </button>
-        </div>
-    </div>
-
-
-    <form #frm="ngForm" (change)="onChange(frm)">
-        <div class="row my-0">
-            <div class="col-md-12">
-                <ol class="px-0">
-                    <li class="px-0" *ngFor="let file of Files.Filelist; let i = index">
-                        <div class="row my-0 ml-0">
-                            <div class="col-md-8">
-                                <div class="form-group">
-
-                                    <input type="file" name="img[]" class="file" (change)="onFileSelected(i,$event)"
-                                        #fileInput />
-                                    <div class="input-group mb-3 ">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1"
-                                                [ngClass]="{'border-danger': !Files.isValidFile(file)}"><i
-                                                    class="fas fa-paperclip"></i></span>
-                                        </div>
-                                        <input type="text" class="form-control" disabled
-                                            [placeholder]="file.name.length?file.name:'تحميل ملف'"
-                                            aria-label="Upload File" aria-describedby="basic-addon1"
-                                            [ngClass]="{'is-invalid': !Files.isValidFile(file)}" />
-                                        <div class="input-group-append">
-                                            <button class="browse input-group-text btn btn-primary border"
-                                                (click)="fileInput.click();"
-                                                [ngClass]="{'border-danger bg-danger': !Files.isValidFile(file)}"
-                                                id="basic-addon2">
-                                                <i class="fas fa-file-alt"></i> أختار ملف
-                                            </button>
+        <form #frm="ngForm" (change)="onChange(frm)">
+            <div class="row my-0">
+                <div class="col-md-12">
+                    <ol class="px-0">
+                        <li class="px-0" *ngFor="let file of Files.Filelist; let i = index">
+                            <div class="row my-0 ml-0">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+    
+                                        <input type="file" name="img[]" class="file" (change)="onFileSelected(i,$event)"
+                                            #fileInput />
+                                        <div class="input-group mb-3 ">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1"
+                                                    [ngClass]="{'border-danger': !Files.isValidFile(file)}"><i
+                                                        class="fas fa-paperclip"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" disabled
+                                                [placeholder]="file.name.length?file.name:'تحميل ملف'"
+                                                aria-label="Upload File" aria-describedby="basic-addon1"
+                                                [ngClass]="{'is-invalid': !Files.isValidFile(file)}" />
+                                            <div class="input-group-append">
+                                                <button class="browse input-group-text btn btn-primary border"
+                                                    (click)="fileInput.click();"
+                                                    [ngClass]="{'border-danger bg-danger': !Files.isValidFile(file)}"
+                                                    id="basic-addon2">
+                                                    <i class="fas fa-file-alt"></i> أختار ملف
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
+    
                                 </div>
-
+                                <div class="col-md-1 offset-md-3 close-container">
+                                    <button class="btn btn-close" (click)="Files.removeFile(i);">
+                                        <i class="fa fa-times fa-md"></i>
+                                    </button>
+                                </div>
                             </div>
-                            <div class="col-md-1 offset-md-3 close-container">
-                                <button class="btn btn-close" (click)="Files.removeFile(i);">
-                                    <i class="fa fa-times fa-md"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </li>
-                </ol>
-            </div>
-        </div>
-
-        <div class="download-container">
-            <div class="row my-2 py-0 font-size-14 mx-0 border" *ngFor="let item of DataFiles;let i=index;">
-                <div class="col-md-5">
-                    <span class="file-id">{{i+1}}.</span> <span>{{item.filename}}</span>
-                </div>
-
-                <div class="col-md-2 ">
-                    <span> {{item.size}} <sub>MB</sub></span>
-                </div>
-                <div class="col-md-1">
-                    <i class="fa fa-file-pdf " *ngIf="item.filetype=='pdf'"></i>
-                    <i class="fa fa-file-image" *ngIf="item.filetype!='pdf'"></i>
-                </div>
-                <div class="col-md-1 offset-md-1">
-                    <i class="fa fa-download fa-md shadow-on-hover"></i>
-                </div>
-                <div class="col-md-1 close-container offset-md-1">
-                    <button class="btn btn-close  text-danger " (click)="removeDataFile(i);">
-                        <i class="fa fa-trash fa-md"></i>
-                    </button>
+                        </li>
+                    </ol>
                 </div>
             </div>
-        </div>
+    
+            <div class="download-container">
+                <div class="row my-2 py-0 font-size-14 mx-0 border" *ngFor="let item of DataFiles;let i=index;">
+                    <div class="col-md-5">
+                        <span class="file-id">{{i+1}}.</span> <span>{{item.filename}}</span>
+                    </div>
+    
+                    <div class="col-md-2 ">
+                        <span> {{item.size}} <sub>MB</sub></span>
+                    </div>
+                    <div class="col-md-1">
+                        <i class="fa fa-file-pdf " *ngIf="item.filetype=='pdf'"></i>
+                        <i class="fa fa-file-image" *ngIf="item.filetype!='pdf'"></i>
+                    </div>
+                    <div class="col-md-1 offset-md-1">
+                        <i class="fa fa-download fa-md shadow-on-hover"></i>
+                    </div>
+                    <div class="col-md-1 close-container offset-md-1">
+                        <button class="btn btn-close  text-danger " (click)="removeDataFile(i);">
+                            <i class="fa fa-trash fa-md"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+    
+        </form>
 
-    </form>
+    </div>
 </div>
